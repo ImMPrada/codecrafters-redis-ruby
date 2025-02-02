@@ -8,7 +8,4 @@ source 'https://rubygems.org'
 # Helps with declaratively parsing binary data.
 gem 'bindata', '~> 2.4'
 gem 'byebug', '~> 11.1'
-
-source 'https://rubygems.pkg.github.com/bro-garden' do
-  gem 'bg_cop'
-end
+gem 'rubocop', '~> 1.71'

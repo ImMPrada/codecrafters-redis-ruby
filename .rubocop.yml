@@ -1,2 +1,63 @@
-inherit_gem:
-  bg_cop: 'lib/rubocop/config/.rubocop.yml'
+require:
+  - rubocop-rails
+  - rubocop-factory_bot
+  - rubocop-rspec
+  - rubocop-rspec_rails
+
+AllCops:
+  TargetRubyVersion: 3.2.2
+  Exclude:
+    - '/**/db/schema.rb'
+    - '/**/bin/bundle'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - '/**/spec/support/schemas/**/*'
+    - '/**/db/migrate/**/*'
+    - '/**/config/initializers/**/*'
+
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+    - '/**/db/migrate/**/*'
+    - '/**/config/initializers/**/*'
+
+Rails/NotNullColumn:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 10
+
+Rails/Output:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 6
+
+Style/ClassVars:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 20
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - '/**/spec/requests/**/*'
+
+Metrics/ParameterLists:
+  Max: 8
+
+Layout/LineLength:
+  Exclude:
+    - '/**/config/initializers/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - '/**/config/environments/*'
