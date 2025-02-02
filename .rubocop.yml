@@ -1,0 +1,2 @@
+inherit_gem:
+  bg_cop: 'lib/rubocop/config/.rubocop.yml'
