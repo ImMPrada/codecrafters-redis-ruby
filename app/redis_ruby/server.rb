@@ -3,6 +3,7 @@ module RedisRuby
     def initialize(port)
       @port = port
       @commands_router = CommandsRouter.new
+      @data_store = {}
     end
 
     def start
@@ -27,7 +28,7 @@ module RedisRuby
 
     private
 
-    attr_accessor :port, :commands_router, :server, :loop_manager
+    attr_accessor :port, :commands_router, :server, :loop_manager, :data_store
 
     def handle_client_data(client)
       command_array = read_resp_array(client)
@@ -40,8 +41,9 @@ module RedisRuby
       input = command_array.shift.upcase
       puts("input: #{input}")
       args = command_array
+      puts("args: #{args}")
 
-      command = commands_router.resolve_command(input, client)
+      command = commands_router.resolve_command(input, client, data_store)
       command.call(*args)
     rescue StandardError => e
       client.puts("-ERR #{e.message}\r\n")
