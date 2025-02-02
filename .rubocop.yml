@@ -1,9 +1,3 @@
-require:
-  - rubocop-rails
-  - rubocop-factory_bot
-  - rubocop-rspec
-  - rubocop-rspec_rails
-
 AllCops:
   TargetRubyVersion: 3.2.2
   Exclude:
