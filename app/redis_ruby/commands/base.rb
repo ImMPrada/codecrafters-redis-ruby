@@ -5,7 +5,7 @@ module RedisRuby
         @client = client
       end
 
-      def call
+      def call(*args)
         raise NotImplementedError
       end
 
@@ -14,7 +14,7 @@ module RedisRuby
       attr_reader :client
 
       def resp_encoder(message)
-        "#{message}\r\n"
+        raise NotImplementedError
       end
     end
   end

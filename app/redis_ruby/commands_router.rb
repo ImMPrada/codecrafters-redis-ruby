@@ -1,7 +1,8 @@
 module RedisRuby
   class CommandsRouter
     COMMANDS = {
-      'PING' => Commands::Ping
+      'PING' => Commands::Ping,
+      'ECHO' => Commands::Echo
     }.freeze
 
     def resolve_command(input, client)
