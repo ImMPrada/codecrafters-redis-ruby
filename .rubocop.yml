@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 3.2.2
+  TargetRubyVersion: 2.7.0
   Exclude:
     - '/**/db/schema.rb'
     - '/**/bin/bundle'
@@ -23,35 +23,16 @@ Metrics/AbcSize:
     - '/**/db/migrate/**/*'
     - '/**/config/initializers/**/*'
 
-Rails/NotNullColumn:
-  Enabled: false
-
-RSpec/ExampleLength:
-  Max: 10
-
-Rails/Output:
-  Enabled: false
-
-RSpec/NestedGroups:
-  Max: 6
-
 Style/ClassVars:
   Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
-  Max: 20
-
-RSpec/EmptyExampleGroup:
-  Exclude:
-    - '/**/spec/requests/**/*'
 
 Metrics/ParameterLists:
   Max: 8
 
 Layout/LineLength:
-  Exclude:
-    - '/**/config/initializers/**/*'
+  Max: 120
 
 Metrics/BlockLength:
   Exclude:
     - '/**/config/environments/*'
+    - 'spec/**/*'
