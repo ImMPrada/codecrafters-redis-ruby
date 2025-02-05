@@ -1,9 +1,11 @@
 module RedisRuby
   class Server
-    def initialize(port)
+    def initialize(port, args = {})
       @port = port
       @commands_router = CommandsRouter.new
       @data_store = {}
+      @dir = args[:dir]
+      @dbfilename = args[:dbfilename]
     end
 
     def start
@@ -28,7 +30,13 @@ module RedisRuby
 
     private
 
-    attr_accessor :port, :commands_router, :server, :loop_manager, :data_store
+    attr_accessor :port,
+                  :commands_router,
+                  :server,
+                  :loop_manager,
+                  :data_store,
+                  :dir,
+                  :dbfilename
 
     def handle_client_data(client)
       command_array = read_resp_array(client)
@@ -43,7 +51,7 @@ module RedisRuby
       args = command_array
       puts("args: #{args}")
 
-      command = commands_router.resolve_command(input, client, data_store)
+      command = commands_router.resolve_command(input, client, data_store, self)
       command.call(*args)
     rescue StandardError => e
       client.puts("-ERR #{e.message}\r\n")
