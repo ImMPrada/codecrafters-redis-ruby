@@ -5,7 +5,8 @@ module RedisRuby
       'ECHO' => Commands::Echo,
       'SET' => Commands::Set,
       'GET' => Commands::Get,
-      'CONFIG' => Commands::Config
+      'CONFIG' => Commands::Config,
+      'KEYS' => Commands::Keys
     }.freeze
 
     def resolve_command(input, client, data_store, server)

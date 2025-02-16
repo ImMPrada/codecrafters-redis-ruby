@@ -5,6 +5,7 @@ module RedisRuby
       @commands_router = CommandsRouter.new
       @dir = args[:dir]
       @dbfilename = args[:dbfilename]
+      @data_store = {}
 
       initialize_database
     end

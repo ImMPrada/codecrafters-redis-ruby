@@ -10,7 +10,7 @@ module RedisRuby
       def load_database
         return {} unless File.exist?(@rdb_path)
 
-        read_database
+        read_database || {}
       end
 
       def save_database(hash)

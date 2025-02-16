@@ -10,7 +10,13 @@ module RedisRuby
             key = read_string(file)
             value = read_string(file)
             puts "Metadata: #{key} = #{value}"
+
+            # Return to previous position to check next byte
+            file.seek(-1, IO::SEEK_CUR)
           end
+
+          # Move forward one byte since we went back one too many
+          file.seek(1, IO::SEEK_CUR)
         end
       end
     end
