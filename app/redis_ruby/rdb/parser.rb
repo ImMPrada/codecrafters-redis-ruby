@@ -1,10 +1,10 @@
 module RedisRuby
   module RDB
     class Parser
-      include DatabaseReader
-      include MetadataReader
-      include HeaderReader
-      include BinaryUtils
+      include Modules::DatabaseReader
+      include Modules::MetadataReader
+      include Modules::HeaderReader
+      include Modules::BinaryUtils
 
       def initialize(file_path)
         @file_path = file_path
