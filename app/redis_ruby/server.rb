@@ -3,9 +3,10 @@ module RedisRuby
     def initialize(port, args = {})
       @port = port
       @commands_router = CommandsRouter.new
-      @data_store = {}
       @dir = args[:dir]
       @dbfilename = args[:dbfilename]
+
+      initialize_database
     end
 
     def start
@@ -37,6 +38,13 @@ module RedisRuby
                   :data_store,
                   :dir,
                   :dbfilename
+
+    def initialize_database
+      return if dir.nil? || dbfilename.nil?
+
+      rdb_manager = RDB::Manager.new(dir, dbfilename)
+      @data_store = rdb_manager.load_database
+    end
 
     def handle_client_data(client)
       command_array = read_resp_array(client)
