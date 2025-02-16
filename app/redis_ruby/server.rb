@@ -42,13 +42,14 @@ module RedisRuby
                   :loop_manager,
                   :data_store,
                   :dir,
-                  :dbfilename
+                  :dbfilename,
+                  :rdb_manager
 
     def initialize_database
       return if dir.nil? || dbfilename.nil?
 
-      rdb_manager = RDB::Manager.new(dir, dbfilename)
-      @data_store = rdb_manager.load_database
+      @rdb_manager = RDB::Manager.new(dir, dbfilename)
+      @data_store = @rdb_manager.load_database
     end
 
     def handle_client_data(client)
