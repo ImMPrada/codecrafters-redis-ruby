@@ -9,4 +9,5 @@ source 'https://rubygems.org'
 
 gem 'bindata', '~> 2.4'
 gem 'byebug', '~> 11.1'
+gem 'rspec', '~> 3.12'
 gem 'rubocop', '~> 1.71'

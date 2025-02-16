@@ -79,7 +79,9 @@ module RedisRuby
           elsif length < 16_384
             @file.write([0x40 | (length >> 8), length & 0xFF].pack('CC')) # 14 bits
           else
-            @file.write([0x80 | (length >> 24), (length >> 16) & 0xFF, (length >> 8) & 0xFF, length & 0xFF].pack('CCCC')) # 32 bits
+            @file.write(
+              [0x80 | (length >> 24), (length >> 16) & 0xFF, (length >> 8) & 0xFF, length & 0xFF].pack('CCCC')
+            ) # 32 bits
           end
         end
       end
