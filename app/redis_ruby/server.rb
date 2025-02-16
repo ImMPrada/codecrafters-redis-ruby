@@ -30,6 +30,10 @@ module RedisRuby
       end
     end
 
+    def save_database
+      rdb_manager.save_database(data_store)
+    end
+
     private
 
     attr_accessor :port,
