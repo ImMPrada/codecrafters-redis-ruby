@@ -4,7 +4,7 @@ module RedisRuby
       module BinaryUtils
         def read_string(file)
           size = read_size(file)
-          file.read(size)
+          file.read(size).force_encoding('UTF-8')
         end
 
         def read_size(file)
