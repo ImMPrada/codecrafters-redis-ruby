@@ -25,7 +25,7 @@ module RedisRuby
         return unless expiration_indicator && expiration_value
         raise "Unknown expiration indicator: #{expiration_indicator}" unless expiration_indicator == 'px'
 
-        var[:xp] = Time.now + (expiration_value.to_i / 1000.0)
+        var[:xp] = ((Time.now + (expiration_value.to_i / 1000.0)).to_f * 1000).to_i
       end
     end
   end

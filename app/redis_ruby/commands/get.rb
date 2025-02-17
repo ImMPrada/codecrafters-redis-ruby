@@ -15,7 +15,11 @@ module RedisRuby
       def respond
         var = data_store[key]
         return nil_response if var.nil?
-        return nil_response if var[:xp] && now > var[:xp]
+
+        if var[:xp] && (Time.now.to_f * 1000).to_i > var[:xp]
+          data_store.delete(key)
+          return nil_response
+        end
 
         resp_encoder(var[:value])
       end
