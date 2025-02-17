@@ -2,18 +2,12 @@ require 'spec_helper'
 require 'tempfile'
 
 RSpec.describe RedisRuby::RDB::Writer do
-  let(:temp_file) { 
-    file = Tempfile.new(['test', '.rdb'])
-    puts "Created file: #{file.path}"
-    file
-  }
+  let(:temp_file) { Tempfile.new(['test', '.rdb']) }
   let(:writer) { described_class.new(temp_file.path) }
   # Read file content in binary mode to properly handle RDB format
   let(:content) { File.read(temp_file.path, mode: 'rb') }
 
   after do
-    puts "File contents:"
-    system("xxd #{temp_file.path}")
     # Clean up temporary files after each test
     temp_file.close
     temp_file.unlink

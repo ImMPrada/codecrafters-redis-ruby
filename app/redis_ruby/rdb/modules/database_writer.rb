@@ -17,7 +17,7 @@ module RedisRuby
 
         def write_database(hash)
           @file.write([SELECT_DB].pack('C'))
-          write_length_encoding(DB_NUMBER)
+          @file.write([DB_NUMBER].pack('C'))
 
           hash.each do |key, value_hash|
             write_key_value_pair(key, value_hash)

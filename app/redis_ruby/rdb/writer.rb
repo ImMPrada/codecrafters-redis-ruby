@@ -17,11 +17,7 @@ module RedisRuby
         write_metadata('redis-ver', '6.0.16')
 
         # If hash is not empty, write the database
-        unless hash.empty?
-          @file.write([SELECT_DB].pack('C'))
-          @file.write([DB_NUMBER].pack('C'))
-          write_database(hash)
-        end
+        write_database(hash) unless hash.empty?
 
         write_footer
       ensure
