@@ -19,9 +19,7 @@ module RedisRuby
       end
 
       def keys(pattern)
-        return data_store.keys if pattern == '*'
-
-        []
+        data_store.keys.select { |key| key.match_pattern?(pattern) }
       end
     end
   end

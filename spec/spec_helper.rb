@@ -1,6 +1,7 @@
 require 'rspec'
 require 'tempfile'
 
+Dir[File.join(__dir__, '../app/overrides', '**', '*.rb')].sort.each { |file| require file }
 Dir[File.join(__dir__, '../app/redis_ruby', '**', '*.rb')].sort.each { |file| require file }
 
 RSpec.configure do |config|

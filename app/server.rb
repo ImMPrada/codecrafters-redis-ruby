@@ -1,6 +1,7 @@
 require 'socket'
 require 'byebug'
 
+Dir[File.join(__dir__, 'overrides', '**', '*.rb')].sort.each { |file| require file }
 Dir[File.join(__dir__, 'redis_ruby', '**', '*.rb')].sort.each { |file| require file }
 
 def parse_arguments
